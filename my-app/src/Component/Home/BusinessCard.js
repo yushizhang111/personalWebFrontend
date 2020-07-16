@@ -5,7 +5,7 @@ import BubbleChartIcon from "@material-ui/icons/BubbleChart";
 import SchoolTwoToneIcon from "@material-ui/icons/SchoolTwoTone";
 import DetailsTwoToneIcon from "@material-ui/icons/DetailsTwoTone";
 import { Hidden, Grid, Fab } from "@material-ui/core";
-import SpeedDials from "./SpeedDial";
+import SpeedDial from "./SpeedDial";
 
 const useStyles = makeStyles((theme) => ({
   businessCard: {
@@ -65,13 +65,25 @@ const useStyles = makeStyles((theme) => ({
 export default function BusinessCard(props) {
   const content = props.content;
   const classes = useStyles();
+  const actions = [
+    {
+      icon: <i color="primary" className="fab fa-github"></i>,
+      name: "Github",
+      link: "https://github.com/yushizhang111",
+    },
+    {
+      icon: <i color="primary" className="fab fa-linkedin"></i>,
+      name: "Linkedin",
+      link: "https://www.linkedin.com/in/yushi-zhang111/",
+    },
+  ];
   return (
     <div className={classes.businessCard}>
       <Hidden mdUp xsDown>
-        <SpeedDials direction="left" />
+        <SpeedDial direction="left" actions={actions} />
       </Hidden>
       <Hidden smUp>
-        <SpeedDials direction="down" />
+        <SpeedDial direction="down" actions={actions} />
       </Hidden>
       <Hidden xsDown>
         <div className={classes.avatar}>

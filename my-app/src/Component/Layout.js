@@ -14,14 +14,19 @@ import {
   Toolbar,
   AppBar,
   FormHelperText,
+  Hidden,
 } from "@material-ui/core";
+import SpeedDial from "../Component/Home/SpeedDial";
+import WorkIcon from "@material-ui/icons/Work";
+import AccountTreeIcon from "@material-ui/icons/AccountTree";
+import ListIcon from "@material-ui/icons/List";
 import yushiLogo from "../img/yushiLogo.png";
 import yushi from "../img/yushi.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "fixed",
-    bottom: theme.spacing(2),
+    bottom: theme.spacing(5),
     right: theme.spacing(2),
   },
   content: {
@@ -29,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     boxShadow: "none",
+  },
+  appBottomBar: {
+    height: theme.spacing(4),
+    top: "auto",
+    bottom: 0,
   },
   logo: {
     height: 35,
@@ -41,13 +51,15 @@ const useStyles = makeStyles((theme) => ({
   head: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems:"center"
-
+    alignItems: "center",
   },
   about: {
     fontSize: "1.5rem",
-    textDecoration:"underline"
-  }
+    textDecoration: "underline",
+    "@global": {
+      a: { color: "black" },
+    },
+  },
 }));
 
 function ScrollTop(props) {
@@ -93,6 +105,23 @@ ScrollTop.propTypes = {
 export default function BackToTop(props) {
   const content = props.content;
   const classes = useStyles();
+  const actions = [
+    {
+      icon: <WorkIcon />,
+      name: "Working Experience",
+      link: "/works",
+    },
+    {
+      icon: <AccountTreeIcon />,
+      name: "Projects",
+      link: "/projects",
+    },
+    {
+      icon: <ListIcon />,
+      name: "Skills",
+      link: "/skills",
+    },
+  ];
   return (
     <React.Fragment>
       <CssBaseline />
@@ -125,6 +154,14 @@ export default function BackToTop(props) {
             <KeyboardArrowUpIcon />
           </Fab>
         </ScrollTop>
+        <Hidden smUp>
+          <AppBar position="fixed" color="primary" className={classes.appBottomBar}>
+            <Toolbar>
+              <SpeedDial direction="up" actions={actions} bottom={true} />
+              <div className={classes.grow} />
+            </Toolbar>
+          </AppBar>
+        </Hidden>
       </BrowserRouter>
     </React.Fragment>
   );

@@ -9,11 +9,14 @@ import SpeedDial from "@material-ui/lab/SpeedDial";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 import AllInclusiveIcon from "@material-ui/icons/AllInclusive";
+import ViewHeadlineSharpIcon from "@material-ui/icons/ViewHeadlineSharp";
 import FileCopyIcon from "@material-ui/icons/FileCopyOutlined";
 import SaveIcon from "@material-ui/icons/Save";
 import PrintIcon from "@material-ui/icons/Print";
 import ShareIcon from "@material-ui/icons/Share";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import { useHistory } from "react-router-dom";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +26,25 @@ const useStyles = makeStyles((theme) => ({
     right: theme.spacing(1),
     [theme.breakpoints.down("xs")]: {
       top: theme.spacing(2),
+    },
+  },
+  rootBottom: {
+    position: "absolute",
+    zIndex: 1,
+    bottom: theme.spacing(4.5),
+    left: theme.spacing(2),
+
+    margin: "0 auto",
+    width: "fit-content",
+    "@global": {
+      ".MuiFab-primary": {
+        color: "lightcoral",
+        backgroundColor: "white",
+      },
+      ".MuiSpeedDialAction-fab": {
+        color: "white",
+        backgroundColor: "lightcoral",
+      },
     },
   },
   radioGroup: {
@@ -37,39 +59,45 @@ const useStyles = makeStyles((theme) => ({
     ".MuiFab-primary": {
       color: "white",
     },
+    ".MuiSpeedDialAction-staticTooltipLabel": {
+      color: "white",
+      backgroundColor: "rgba(0,0,0,0.6)",
+      whiteSpace: "nowrap",
+    },
   },
 }));
 
-const actions = [
-  { icon: <i color="primary" className="fab fa-github"></i>, name: "Github" },
-  {
-    icon: <i color="primary" className="fab fa-linkedin"></i>,
-    name: "Linkedin",
-  },
-  { icon: <i color="primary" className="fas fa-download"></i>, name: "Resume" },
-];
-
 export default function SpeedDials(props) {
   const classes = useStyles();
-  const direction = props.direction;
-  const [open, setOpen] = React.useState(false);
+  const { direction, actions, bottom } = props;
+  const [open, setOpen] = React.useState(bottom ? true : false);
   const [hidden, setHidden] = React.useState(false);
-
+  let history = useHistory();
   const handleClose = () => {
     setOpen(false);
   };
-
+  const handleOptions = (bottom, link) => {
+    setOpen(false);
+    console.log(bottom)
+    if (bottom) {
+      let path = link;
+      history.push(path);
+    } else {
+      console.log(link);
+      window.location.href = link;
+    }
+  };
   const handleOpen = () => {
     setOpen(true);
   };
 
   return (
-    <div className={classes.root}>
+    <div className={clsx({ [classes.root]: !bottom },{[classes.rootBottom]:bottom})}>
       <SpeedDial
         ariaLabel="SpeedDial example"
         className={classes.speedDial}
         hidden={hidden}
-        icon={<AllInclusiveIcon />}
+        icon={bottom?<ViewHeadlineSharpIcon />:<AllInclusiveIcon />}
         onClose={handleClose}
         onOpen={handleOpen}
         open={open}
@@ -80,7 +108,9 @@ export default function SpeedDials(props) {
             key={action.name}
             icon={action.icon}
             tooltipTitle={action.name}
-            onClick={handleClose}
+            tooltipOpen={bottom}
+            tooltipPlacement="right"
+            onClick={()=>handleOptions(bottom, action.link)}
           />
         ))}
       </SpeedDial>

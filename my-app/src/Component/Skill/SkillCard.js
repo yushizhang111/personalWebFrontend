@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1rem",
   },
   card: {
-    marginBottom: "1rem",
+    marginBottom: "1.5rem",
     border:'none'
   },
   background: {

@@ -66,15 +66,6 @@ export default function BusinessCard(props) {
             <strong>Linkedin</strong>
           </a>
         </div>
-        <div className={classes.line}>
-          <a
-            href="https://www.linkedin.com/in/yushi-zhang111/"
-            className={classes.link}
-          >
-            <i color="primary" className="fas fa-download"></i>
-            <strong>Resume</strong>
-          </a>
-        </div>
       </div>
     </div>
   );

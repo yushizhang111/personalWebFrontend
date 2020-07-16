@@ -32,7 +32,6 @@ export const GET_BACKENDSKILLS = gql`
 `;
 
 export default ({ skillType, tool }) => {
-  console.log(tool);
   const classes = useStyles();
   return (
     <Query query={GET_BACKENDSKILLS} variables={{ skillType, tool }}>

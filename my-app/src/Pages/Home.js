@@ -22,22 +22,23 @@ export default class Home extends React.Component {
             </Grid>
           </Hidden>
         </Grid>
-
-        <div className="card-group">
-          <Card image={skill} title="Skills . . ." link="skills" id="skill" />
-          <Card
-            image={project}
-            title="Projects . . ."
-            link="projects"
-            id="project"
-          />
-          <Card
-            image={work}
-            title="Working Experience . . ."
-            link="works"
-            id="work"
-          />
-        </div>
+        <Hidden xsDown>
+          <div className="card-group">
+            <Card image={skill} title="Skills . . ." link="skills" id="skill" />
+            <Card
+              image={project}
+              title="Projects . . ."
+              link="projects"
+              id="project"
+            />
+            <Card
+              image={work}
+              title="Working Experience . . ."
+              link="works"
+              id="work"
+            />
+          </div>
+        </Hidden>
         <Divider className="divider" light={true} />
         <Routes />
       </div>
