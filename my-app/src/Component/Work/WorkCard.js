@@ -1,8 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, Grid } from "@material-ui/core";
-import SkillViewer from "../../View/SkillViewer";
-import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   root: {

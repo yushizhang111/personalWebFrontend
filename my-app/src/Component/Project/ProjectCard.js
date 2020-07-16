@@ -1,20 +1,9 @@
 import React from "react";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
-import {
-  Chip,
-  Card,
-  CardHeader,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Collapse,
-  Typography,
-  IconButton,
-} from "@material-ui/core";
+import { Chip, Card, Collapse, IconButton } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -41,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   skill: {
     fontSize: "0.9rem",
     margin: 3,
-    color:'white'
+    color: "white",
   },
   apollo: {
     backgroundColor: "orange",
@@ -72,7 +61,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProjectCard({ id, name, skills, body, image, link,project }) {
+export default function ProjectCard({
+  id,
+  name,
+  skills,
+  body,
+  link,
+  project,
+}) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -118,7 +114,7 @@ export default function ProjectCard({ id, name, skills, body, image, link,projec
       <div>
         {link ? (
           <div className={classes.link}>
-            <a hred={link}>Open the website...</a>
+            <a href={link}>Open the website...</a>
           </div>
         ) : null}
       </div>

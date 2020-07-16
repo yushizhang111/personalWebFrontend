@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import WorkCard from "../Component/Work/WorkCard";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",

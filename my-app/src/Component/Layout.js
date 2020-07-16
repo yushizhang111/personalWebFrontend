@@ -13,7 +13,6 @@ import {
   CssBaseline,
   Toolbar,
   AppBar,
-  FormHelperText,
   Hidden,
 } from "@material-ui/core";
 import SpeedDial from "../Component/Home/SpeedDial";

@@ -1,20 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormLabel from "@material-ui/core/FormLabel";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Switch from "@material-ui/core/Switch";
-import SpeedDial from "@material-ui/lab/SpeedDial";
-import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
-import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
+import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 import AllInclusiveIcon from "@material-ui/icons/AllInclusive";
 import ViewHeadlineSharpIcon from "@material-ui/icons/ViewHeadlineSharp";
-import FileCopyIcon from "@material-ui/icons/FileCopyOutlined";
-import SaveIcon from "@material-ui/icons/Save";
-import PrintIcon from "@material-ui/icons/Print";
-import ShareIcon from "@material-ui/icons/Share";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import { useHistory } from "react-router-dom";
 import clsx from "clsx";
 
@@ -70,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SpeedDials(props) {
   const classes = useStyles();
   const { direction, actions, bottom } = props;
-  const [open, setOpen] = React.useState(bottom ? true : false);
+  const [open, setOpen] = React.useState(true);
   const [hidden, setHidden] = React.useState(false);
   let history = useHistory();
   const handleClose = () => {
@@ -78,7 +66,7 @@ export default function SpeedDials(props) {
   };
   const handleOptions = (bottom, link) => {
     setOpen(false);
-    console.log(bottom)
+    console.log(bottom);
     if (bottom) {
       let path = link;
       history.push(path);
@@ -92,12 +80,17 @@ export default function SpeedDials(props) {
   };
 
   return (
-    <div className={clsx({ [classes.root]: !bottom },{[classes.rootBottom]:bottom})}>
+    <div
+      className={clsx(
+        { [classes.root]: !bottom },
+        { [classes.rootBottom]: bottom }
+      )}
+    >
       <SpeedDial
         ariaLabel="SpeedDial example"
         className={classes.speedDial}
         hidden={hidden}
-        icon={bottom?<ViewHeadlineSharpIcon />:<AllInclusiveIcon />}
+        icon={bottom ? <ViewHeadlineSharpIcon /> : <AllInclusiveIcon />}
         onClose={handleClose}
         onOpen={handleOpen}
         open={open}
@@ -110,7 +103,7 @@ export default function SpeedDials(props) {
             tooltipTitle={action.name}
             tooltipOpen={bottom}
             tooltipPlacement="right"
-            onClick={()=>handleOptions(bottom, action.link)}
+            onClick={() => handleOptions(bottom, action.link)}
           />
         ))}
       </SpeedDial>

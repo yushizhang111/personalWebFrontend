@@ -1,10 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import yushi from "../../img/yushi-large.jpeg";
 import slogan from "../../img/slogan.png";
-import BubbleChartIcon from "@material-ui/icons/BubbleChart";
-import SchoolTwoToneIcon from "@material-ui/icons/SchoolTwoTone";
-import { Hidden, Grid, Divider } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   linkCard: {
@@ -42,8 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BusinessCard(props) {
-  const content = props.content;
+export default function BusinessCard() {
   const classes = useStyles();
   return (
     <div className={classes.linkCard}>

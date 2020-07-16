@@ -1,11 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import yushi from "../../img/yushi-large.jpeg";
 import BubbleChartIcon from "@material-ui/icons/BubbleChart";
 import SchoolTwoToneIcon from "@material-ui/icons/SchoolTwoTone";
-import DetailsTwoToneIcon from "@material-ui/icons/DetailsTwoTone";
-import { Hidden, Grid, Fab } from "@material-ui/core";
+import { Hidden, Grid } from "@material-ui/core";
 import SpeedDial from "./SpeedDial";
+import yushi from "../../img/yushi-large.jpeg";
 
 const useStyles = makeStyles((theme) => ({
   businessCard: {
