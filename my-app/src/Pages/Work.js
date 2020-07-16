@@ -12,7 +12,7 @@ import WorkViewer from "../View/WorkViewer";
 export default class About extends React.Component {
   render() {
     return (
-      <div id="work">
+      <div id="works">
         <h2>WORKING EXPERIENCE</h2>
         <WorkViewer />
       </div>

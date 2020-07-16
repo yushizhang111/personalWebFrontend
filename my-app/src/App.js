@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-
 import logo from "./logo.svg";
 import "./App.css";
-// import SkillViewer from './SkillViewer'
-
 import Home from "./Pages/Home";
 import Layout from "./Component/Layout";
 import { createMuiTheme } from "@material-ui/core/styles";
