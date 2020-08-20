@@ -99,11 +99,11 @@ export default function BusinessCard(props) {
             <Grid item xs={12} sm={6} lg={4}>
               <h3>
                 <BubbleChartIcon color="primary" />
-                Full Stack Developer
+                Front-end Developer
               </h3>
               <h3>
                 <BubbleChartIcon color="primary" />
-                Front-end Developer
+                Full Stack Developer
               </h3>
               <h3>
                 <BubbleChartIcon color="primary" />

@@ -9,10 +9,9 @@ export default class About extends React.Component {
         <Grid container justify="space-between" alignItems="flex-start">
           <Grid item xs={12} sm={6}>
             <ul>
-              <li>Sufficient experience in full stack development</li>
-              <li>Solid knowledge in relational database</li>
-              <li>Have experience using Azure, C# and SQL</li>
-              <li>Have experience nodejs, javascript, react, redux, mongodb</li>
+              <li>Have sufficient experience in front end development</li>
+              <li>Have solid knowledge in HTML, CSS, JS</li>
+              <li>Have sufficient experience in nodejs, reactjs, redux, mongodb</li>
             </ul>
           </Grid>
           <Grid item xs={12} sm={6}>
