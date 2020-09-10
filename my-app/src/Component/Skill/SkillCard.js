@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     marginBottom: "1.5rem",
-    border:'none'
+    border: "none",
   },
   background: {
     background: "aliceblue",
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SkillCard(props) {
-  const { skillType, title, background } = props;
+  const { skillType, title, background, t } = props;
   const classes = useStyles();
   return (
     <Card
@@ -35,10 +35,10 @@ export default function SkillCard(props) {
           {title}
         </div>
         <div className={classes.skills}>
-          <SkillViewer skillType={skillType} tool={false} />
+          <SkillViewer skillType={skillType} tool={false} t={t} />
         </div>
         <div className={classes.skills}>
-          <SkillViewer skillType={skillType} tool={true} />
+          <SkillViewer skillType={skillType} tool={true} t={t} />
         </div>
       </CardContent>
     </Card>

@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function BusinessCard(props) {
-  const content = props.content;
+  const { t } = props;
   const classes = useStyles();
   const actions = [
     {
@@ -70,11 +70,11 @@ export default function BusinessCard(props) {
       name: "Github",
       link: "https://github.com/yushizhang111",
     },
-    {
-      icon: <i color="primary" className="fab fa-linkedin"></i>,
-      name: "Linkedin",
-      link: "https://www.linkedin.com/in/yushi-zhang111/",
-    },
+    // {
+    //   icon: <i color="primary" className="fab fa-linkedin"></i>,
+    //   name: "Linkedin",
+    //   link: "https://www.linkedin.com/in/yushi-zhang111/",
+    // },
   ];
   return (
     <div className={classes.businessCard}>
@@ -90,42 +90,44 @@ export default function BusinessCard(props) {
         </div>
       </Hidden>
       <div className={classes.content}>
-        <h1>Yushi Zhang </h1>
+        <h1>{t("Yushi Zhang")} </h1>
         <div className={classes.tel}>
-          yushizhang.work@gmail.com | +61451575825
+          zyushi111@hotmail.com | yushizhang.work@gmail.com | +61451575825
         </div>
         <div>
           <Grid container alignItems="center">
             <Grid item xs={12} sm={6} lg={4}>
               <h3>
                 <BubbleChartIcon color="primary" />
-                Front-end Developer
+                {t("Front-end Developer")}
               </h3>
               <h3>
                 <BubbleChartIcon color="primary" />
-                Full Stack Developer
+                {t("Full Stack Developer")}
               </h3>
               <h3>
                 <BubbleChartIcon color="primary" />
-                Web Developer
+                {t("Web Developer")}
               </h3>
             </Grid>
             <Grid item xs={12} sm={6} lg={8}>
               <div className={classes.edu}>
                 <SchoolTwoToneIcon color="primary" />
                 <div>
-                  <div>Master of Information Technology</div>
+                  <div>{t("Master of Information Technology")}</div>
                   <div className={classes.uni}>
-                    University of Queensland (AU)
+                    {t("University of Queensland (AU)")}
                   </div>
                 </div>
               </div>
               <div className={classes.edu}>
                 <SchoolTwoToneIcon color="primary" />
                 <div>
-                  <div>Master by Research in Integrative Neuroscience</div>
+                  <div>
+                    {t("Master by Research in Integrative Neuroscience")}
+                  </div>
                   <div className={classes.uni}>
-                    University of Edinburgh (UK)
+                    {t("University of Edinburgh (UK)")}
                   </div>
                 </div>
               </div>

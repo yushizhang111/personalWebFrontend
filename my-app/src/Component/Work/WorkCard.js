@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
   linkedin: {
     color: "lightcoral",
     textDecoration: "underline",
-    fontWeight:600
+    fontWeight: 600,
   },
   description: {
     fontSize: "1rem",
-    marginTop:10
-  }
+    marginTop: 10,
+  },
 }));
 
 export default function WorkCard(props) {
@@ -47,7 +47,12 @@ export default function WorkCard(props) {
           </Grid>
         </Grid>
         {linkedin && (
-          <a className={classes.linkedin} href={linkedin}>
+          <a
+            className={classes.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            href={linkedin}
+          >
             Linkedin
           </a>
         )}

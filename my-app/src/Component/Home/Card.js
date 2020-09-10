@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HomeCard(props) {
   const classes = useStyles();
-  const { image, title, link, id } = props;
+  const { image, title, link } = props;
   return (
     <Card className={classes.root}>
       <Link

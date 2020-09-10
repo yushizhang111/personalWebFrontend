@@ -5,14 +5,38 @@ import Skill from "./Pages/Skill";
 import Project from "./Pages/Project";
 import Work from "./Pages/Work";
 
-const Routes = () => (
+const Routes = ({ t, lng, scroll }) => (
   <main>
     <Switch>
-      <Route exact path="/" component={About} />
-      <Route exact path="/skills" component={Skill} />
-      <Route exact path="/projects" component={Project} />
-      <Route exact path="/works" component={Work} />
-      <Route exact path="/about" component={About} />
+      <Route exact path="/" render={(props) => <About {...props} t={t} />} />
+      <Route
+        exact
+        path="/skills"
+        render={(props) => (
+          <Skill {...props} t={t} lng={lng} scroll={scroll} />
+        )}
+      />
+      <Route
+        exact
+        path="/projects"
+        render={(props) => (
+          <Project {...props} t={t} lng={lng} scroll={scroll} />
+        )}
+      />
+      <Route
+        exact
+        path="/works"
+        render={(props) => (
+          <Work {...props} t={t} lng={lng} scroll={scroll} />
+        )}
+      />
+      <Route
+        exact
+        path="/about"
+        render={(props) => (
+          <About {...props} t={t} scroll={scroll} />
+        )}
+      />
     </Switch>
   </main>
 );

@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   isTool: { color: "#c9c9c9" },
-  notTool: {color:"#ffa3ae"},
+  notTool: { color: "#ffa3ae" },
 }));
 
 export const GET_BACKENDSKILLS = gql`
@@ -31,7 +31,7 @@ export const GET_BACKENDSKILLS = gql`
   }
 `;
 
-export default ({ skillType, tool }) => {
+export default ({ skillType, tool, t }) => {
   const classes = useStyles();
   return (
     <Query query={GET_BACKENDSKILLS} variables={{ skillType, tool }}>
@@ -43,7 +43,7 @@ export default ({ skillType, tool }) => {
               { [classes.notTool]: !tool }
             )}
           >
-            Loading...
+            {t("Loading")}...
           </div>
         ) : (
           <div>

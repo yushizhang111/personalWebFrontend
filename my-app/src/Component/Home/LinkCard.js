@@ -43,16 +43,21 @@ export default function BusinessCard() {
   return (
     <div className={classes.linkCard}>
       <div className={classes.slogan}>
-        <img src={slogan} />
+        <img src={slogan} alt="attitude" />
       </div>
       <div className={classes.links}>
         <div className={classes.line}>
-          <a href="https://github.com/yushizhang111" className={classes.link}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/yushizhang111"
+            className={classes.link}
+          >
             <i color="primary" className="fab fa-github"></i>
             <strong>Github</strong>
           </a>
         </div>
-        <div className={classes.line}>
+        {/* <div className={classes.line}>
           <a
             href="https://www.linkedin.com/in/yushi-zhang111/"
             className={classes.link}
@@ -60,7 +65,7 @@ export default function BusinessCard() {
             <i color="primary" className="fab fa-linkedin"></i>
             <strong>Linkedin</strong>
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

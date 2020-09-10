@@ -18,9 +18,11 @@ import {
 import SpeedDial from "../Component/Home/SpeedDial";
 import WorkIcon from "@material-ui/icons/Work";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
+import PersonIcon from "@material-ui/icons/Person";
 import ListIcon from "@material-ui/icons/List";
 import yushiLogo from "../img/yushiLogo.png";
 import yushi from "../img/yushi.png";
+import Language from "./Language";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,11 +55,19 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   about: {
-    fontSize: "1.5rem",
-    textDecoration: "underline",
+    fontSize: "1.2rem",
+    fontWeight:600,
     "@global": {
-      a: { color: "black" },
+      a: {
+        color: "black",
+        textDecoration: "none",
+      },
     },
+  },
+  tool: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
 }));
 
@@ -102,22 +112,27 @@ ScrollTop.propTypes = {
 };
 
 export default function BackToTop(props) {
-  const content = props.content;
+  const { content, t, i18n, handleAllLanguages } = props;
   const classes = useStyles();
   const actions = [
     {
+      icon: <PersonIcon />,
+      name: t("About"),
+      link: "/about",
+    },
+    {
       icon: <WorkIcon />,
-      name: "Working Experience",
+      name: t("Working Experience"),
       link: "/works",
     },
     {
       icon: <AccountTreeIcon />,
-      name: "Projects",
+      name: t("Projects"),
       link: "/projects",
     },
     {
       icon: <ListIcon />,
-      name: "Skills",
+      name: t("Skills"),
       link: "/skills",
     },
   ];
@@ -130,15 +145,25 @@ export default function BackToTop(props) {
             <Container maxWidth="lg">
               <div className={classes.head}>
                 <div className={classes.avatar}>
-                  <Avatar alt="Yushi Zhang" src={yushi} />
+                  <Avatar alt={t("Yushi Zhang")} src={yushi} />
                   <img
                     alt="logo"
                     src={yushiLogo}
                     className={classes.logo}
                   ></img>
                 </div>
-                <div className={classes.about}>
-                  <Link to={{ pathname: `/about` }}>About</Link>
+                <div className={classes.tool}>
+                  <div>
+                    <Language
+                      i18n={i18n}
+                      handleAllLanguages={handleAllLanguages}
+                    />
+                  </div>
+                  <Hidden xsDown>
+                    <div className={classes.about}>
+                      <Link to={{ pathname: `/about` }}>{t("About")}</Link>
+                    </div>
+                  </Hidden>
                 </div>
               </div>
             </Container>
@@ -154,7 +179,11 @@ export default function BackToTop(props) {
           </Fab>
         </ScrollTop>
         <Hidden smUp>
-          <AppBar position="fixed" color="primary" className={classes.appBottomBar}>
+          <AppBar
+            position="fixed"
+            color="primary"
+            className={classes.appBottomBar}
+          >
             <Toolbar>
               <SpeedDial direction="up" actions={actions} bottom={true} />
               <div className={classes.grow} />

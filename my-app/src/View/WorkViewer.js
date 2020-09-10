@@ -15,22 +15,25 @@ export const GET_BACKENDWORKS = gql`
     allWorkingExperiences(orderBy: "rank") {
       id
       position
+      chinesePosition
       company
+      chineseCompany
       linkedin
       start
       end
       description
+      chineseDescription
     }
   }
 `;
 
-export default () => {
+export default ({t,lng}) => {
   const classes = useStyles();
   return (
-    <Query query={GET_BACKENDWORKS} >
+    <Query query={GET_BACKENDWORKS}>
       {({ loading, data }) =>
         loading ? (
-          <div>Loading...</div>
+          <div>{t("Loading")}...</div>
         ) : (
           <div className={classes.root}>
             {data &&
@@ -38,12 +41,14 @@ export default () => {
                 <WorkCard
                   key={work.id}
                   id={work.id}
-                  position={work.position}
-                  company={work.company}
+                  position={lng === "zh" ? work.chinesePosition : work.position}
+                  company={lng === "zh" ? work.chineseCompany : work.company}
                   linkedin={work.linkedin}
                   start={work.start}
                   end={work.end}
-                  description={work.description}
+                  description={
+                    lng === "zh" ? work.chineseDescription : work.description
+                  }
                 />
               ))}
           </div>

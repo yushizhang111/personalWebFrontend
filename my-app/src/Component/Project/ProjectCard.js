@@ -11,6 +11,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     boxShadow: "1px 1px 4px #eaeaea",
   },
+  projectCard: {
+    "&:hover": {
+      "cursor":"pointer"
+    }
+  },
   expand: {
     transform: "rotate(0deg)",
     marginLeft: "auto",
@@ -46,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   body: {
     whiteSpace: "pre-wrap",
-    fontWeight: 700,
+    fontWeight: 600,
     marginTop: 10,
   },
   link: {
@@ -54,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
     "@global": {
       a: {
-        color: "#c9c9c9",
+        color: "grey",
         textDecoration: "underline",
       },
     },
@@ -68,6 +73,7 @@ export default function ProjectCard({
   body,
   link,
   project,
+  t,
 }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -76,52 +82,56 @@ export default function ProjectCard({
     setExpanded(!expanded);
   };
   return (
-    <Card key={id} className={classes.root}>
-      <div className={classes.title}>
-        <div>{name}</div>
+    <div onClick={handleExpandClick} className={classes.projectCard}>
+      <Card key={id} className={classes.root}>
+        <div className={classes.title}>
+          <div>{name}</div>
 
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </div>
-      <div>
-        {skills.map((skill) => (
-          <Chip
-            className={clsx(
-              classes.skill,
-              {
-                [classes.apollo]: project == "apollo",
-              },
-              {
-                [classes.jr]: project == "jr",
-              },
-              {
-                [classes.student]: project == "student",
-              }
-            )}
-            key={skill.id}
-            label={skill.name}
-          />
-        ))}
-      </div>
-      <div>
-        {link ? (
-          <div className={classes.link}>
-            <a href={link}>Open the website...</a>
-          </div>
-        ) : null}
-      </div>
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </div>
+        <div>
+          {skills.map((skill) => (
+            <Chip
+              className={clsx(
+                classes.skill,
+                {
+                  [classes.apollo]: project === "apollo",
+                },
+                {
+                  [classes.jr]: project === "jr",
+                },
+                {
+                  [classes.student]: project === "student",
+                }
+              )}
+              key={skill.id}
+              label={skill.name}
+            />
+          ))}
+        </div>
+        <div>
+          {link ? (
+            <div className={classes.link}>
+              <a target="_blank" rel="noopener noreferrer" href={link}>
+                {t("Open the website")}...
+              </a>
+            </div>
+          ) : null}
+        </div>
 
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <div className={classes.body}>{body}</div>
-      </Collapse>
-    </Card>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <div className={classes.body}>{body}</div>
+        </Collapse>
+      </Card>
+    </div>
   );
 }

@@ -13,15 +13,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ProjectList(props) {
-  const { projectType, title, startTime, endTime } = props;
+  const { projectType, title, t, lng } = props;
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <div className={classes.title}>{title}</div>
-      <div className={classes.subTitle}>
-        From {startTime} to {endTime}
-      </div>
-      <ProjectViewer projectType={projectType} />
+      <ProjectViewer projectType={projectType} t={t} lng={lng}/>
     </div>
   );
 }

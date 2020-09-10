@@ -9,12 +9,23 @@ import skill from "../img/skill.jpg";
 import Routes from "../Routes";
 
 export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+    this.scroll = this.scroll.bind(this);
+  }
+
+  scroll() {
+    window.scrollTo(0, this.myRef.current.offsetTop);
+  }
   render() {
+    const { t, lng } = this.props;
+
     return (
       <div>
         <Grid container>
           <Grid item md={8} xs={12}>
-            <BusinessCard />
+            <BusinessCard t={t} />
           </Grid>
           <Hidden smDown>
             <Grid item md={4} xs={12}>
@@ -24,23 +35,28 @@ export default class Home extends React.Component {
         </Grid>
         <Hidden xsDown>
           <div className="card-group">
-            <Card image={skill} title="Skills . . ." link="skills" id="skill" />
+            <Card
+              image={skill}
+              title={t("Skills") + ". . ."}
+              link="skills"
+              id="skill"
+            />
             <Card
               image={project}
-              title="Projects . . ."
+              title={t("Projects") + ". . ."}
               link="projects"
               id="project"
             />
             <Card
               image={work}
-              title="Working Experience . . ."
+              title={t("Working Experience") + ". . ."}
               link="works"
               id="work"
             />
           </div>
         </Hidden>
-        <Divider className="divider" light={true} />
-        <Routes />
+        <Divider className="divider" light={true} ref={this.myRef} />
+        <Routes t={t} lng={lng} scroll={this.scroll} />
       </div>
     );
   }

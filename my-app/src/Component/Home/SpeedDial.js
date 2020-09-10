@@ -49,8 +49,12 @@ const useStyles = makeStyles((theme) => ({
     },
     ".MuiSpeedDialAction-staticTooltipLabel": {
       color: "white",
-      backgroundColor: "rgba(0,0,0,0.6)",
+      backgroundColor: "grey",
       whiteSpace: "nowrap",
+      display: "inline-block",
+      verticalAlign: "middle",
+      lineHeight: "normal",
+      paddingBottom:0
     },
   },
 }));
@@ -59,7 +63,6 @@ export default function SpeedDials(props) {
   const classes = useStyles();
   const { direction, actions, bottom } = props;
   const [open, setOpen] = React.useState(true);
-  const [hidden, setHidden] = React.useState(false);
   let history = useHistory();
   const handleClose = () => {
     setOpen(false);
@@ -89,7 +92,7 @@ export default function SpeedDials(props) {
       <SpeedDial
         ariaLabel="SpeedDial example"
         className={classes.speedDial}
-        hidden={hidden}
+        hidden={false}
         icon={bottom ? <ViewHeadlineSharpIcon /> : <AllInclusiveIcon />}
         onClose={handleClose}
         onOpen={handleOpen}
